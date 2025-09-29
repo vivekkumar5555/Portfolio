@@ -4,156 +4,570 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧔🏻‍♂️Vivek's MERN Portfolio</title>
+    <meta name="description"
+        content="Vivek Kumar - Professional MERN Stack Developer & Technical Lead. Specialized in React, Node.js, MongoDB, and modern web technologies.">
+    <meta name="keywords"
+        content="MERN Stack, React Developer, Node.js, MongoDB, Full Stack Developer, Web Development, JavaScript, TypeScript">
+    <meta name="author" content="Vivek Kumar">
+    <meta property="og:title" content="Vivek Kumar - MERN Stack Developer Portfolio">
+    <meta property="og:description"
+        content="Professional MERN Stack Developer with expertise in React, Node.js, MongoDB, and modern web technologies.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Vivek Kumar | MERN Stack Developer & Technical Lead</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="logo-animation">VK</div>
+                <div class="loading-3d-elements">
+                    <div class="loading-cube"></div>
+                    <div class="loading-sphere"></div>
+                    <div class="loading-pyramid"></div>
+                    <div class="loading-3d-box"></div>
+                </div>
+            </div>
+            <div class="loading-text">Loading Portfolio...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav" id="floatingNav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-text">VK</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="nav-link" data-section="about">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+                <a href="#skills" class="nav-link" data-section="skills">
+                    <i class="fas fa-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#projects" class="nav-link" data-section="projects">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="#experience" class="nav-link" data-section="experience">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="#contact" class="nav-link" data-section="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+            <div class="nav-actions">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Sidebar -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+        <div class="mobile-sidebar-header">
+            <div class="mobile-brand">
+                <span class="brand-text">VK</span>
+            </div>
+            <button class="mobile-close-btn" id="mobileCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-sidebar-content">
+            <div class="mobile-nav-links">
+                <a href="#home" class="mobile-nav-link active" data-section="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#about" class="mobile-nav-link" data-section="about">
+                    <i class="fas fa-user"></i>
+                    <span>About</span>
+                </a>
+                <a href="#skills" class="mobile-nav-link" data-section="skills">
+                    <i class="fas fa-code"></i>
+                    <span>Skills</span>
+                </a>
+                <a href="#projects" class="mobile-nav-link" data-section="projects">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Projects</span>
+                </a>
+                <a href="#experience" class="mobile-nav-link" data-section="experience">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Experience</span>
+                </a>
+                <a href="#contact" class="mobile-nav-link" data-section="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+            <div class="mobile-sidebar-footer">
+                <div class="mobile-theme-toggle">
+                    <span>Theme</span>
+                    <button class="mobile-theme-btn" id="mobileThemeToggle">
+                        <i class="fas fa-moon"></i>
+                        <span>Dark Mode</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="mobile-sidebar-overlay" id="mobileSidebarOverlay"></div>
+
+    <!-- Particle Background -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- 3D Background Elements -->
+    <div class="bg-element bg-element-1" data-parallax="0.3"></div>
+    <div class="bg-element bg-element-2" data-parallax="0.5"></div>
+    <div class="bg-element bg-element-3" data-parallax="0.7"></div>
+
     <div class="container">
 
-        <header>
-            <nav>
-                <div class="nav1">
-                    <div class="logo">🤖Vivek</div>
-                    <div class="project"><a href="">Project</a></div>
-                    <div class="work"><a href="">Contact</a></div>
-                    <div class="about"><a href="">About me</a></div>
-                    <div class="edu" style="font-weight: 400;
-    font-size: large;
-    cursor: pointer;"><a href="">Education</a></div>
-                </div>
-                <div class="nav2">
-                    <a href="https://github.com/vivekkumar5555" target="_blank" class="leetcode"><i
-                            class="fab fa-github"></i></a>
-                    <a href="https://leetcode.com/u/vivek65344/" target="_blank" class="github"><i
-                            class="fas fa-code"></i></a>
-                    <div class="mode"><i class="fas fa-moon"></i></div>
-                </div>
-            </nav>
-        </header>
-
         <main>
-            <section class="introduction">
-                <span class="first">Hi! 👍</span>
-                <h1>
-                    <span class="second">I'm</span>
-                    <span class="third">Vivek</span>
-                    <span class="fourth">Kumar</span>
-                </h1>
-                <p>A MERN Stack Developer & Technical Lead passionate about building scalable,Proficient in the
-                    MERN stack (MongoDB, Express.js, Node.js) and experienced in web development technologies.
-                    Detail-oriented
-                    and driven, with a strong understanding of computer science fundamentals. .</p>
-                <div class="introbtn">
-                    <button class="btn" type="button"><i class="fas fa-paper-plane"></i> Get in Touch</button>
-                    <a style="text-decoration: none;" href="./MERN_RESUME_f.pdf" download="Vivek_Kumar_Resume.pdf"
-                        class="resume">
-                        <i class="fas fa-file-pdf"></i> Resume
-                    </a>
+            <!-- Hero Section -->
+            <section id="home" class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="greeting" data-aos="fade-up" data-aos-delay="100">
+                            <span class="wave">👋</span>
+                            <span class="greeting-text">Hello, I'm</span>
+                        </div>
+                        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+                            <span class="name-primary">Vivek</span>
+                            <span class="name-secondary">Kumar</span>
+                        </h1>
+                        <div class="typing-container" data-aos="fade-up" data-aos-delay="300">
+                            <span class="typing-text">I'm a </span>
+                            <span class="typing-animation" id="typingAnimation"></span>
+                            <span class="cursor">|</span>
+                        </div>
+                        <p class="hero-description" data-aos="fade-up" data-aos-delay="400">
+                            Passionate Software Developer with expertise in building scalable web applications using the
+                            MERN stack.
+                            Currently working as a Software Developer, I specialize in React, Node.js, MongoDB, and
+                            modern web technologies to create exceptional digital experiences.
+                        </p>
+                        <div class="hero-stats" data-aos="fade-up" data-aos-delay="500">
+                        </div>
+                        <div class="hero-actions" data-aos="fade-up" data-aos-delay="600">
+                            <button class="btn btn-primary" type="button" onclick="scrollToContact()">
+                                <i class="fas fa-paper-plane"></i>
+                                <span>Get In Touch</span>
+                            </button>
+                            <a href="./MERN_RESUME_f.pdf" download="Vivek_Kumar_Resume.pdf" class="btn btn-secondary">
+                                <i class="fas fa-download"></i>
+                                <span>Download Resume</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-visual" data-aos="fade-left" data-aos-delay="700">
+                        <div class="profile-card cursor-glow">
+                            <div class="profile-image">
+                                <div class="image-placeholder">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <div class="floating-elements">
+                                    <div class="floating-icon react-icon">
+                                        <i class="fab fa-react"></i>
+                                    </div>
+                                    <div class="floating-icon node-icon">
+                                        <i class="fab fa-node-js"></i>
+                                    </div>
+                                    <div class="floating-icon js-icon">
+                                        <i class="fab fa-js-square"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="800">
+                    <div class="scroll-text">Scroll Down</div>
+                    <div class="scroll-arrow">
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
                 </div>
             </section>
 
-            <section class="tech-stack">
-                <p>My MERN Stack & Favorite Tools:</p>
-                <div class="image">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="java"
-                        title="java">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                        alt="MongoDB" title="MongoDB">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"
-                        title="React">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
-                        alt="Node.js" title="Node.js">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-                        alt="JavaScript" title="JavaScript">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
-                        alt="TypeScript" title="TypeScript">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="Redux"
-                        title="Redux">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg"
-                        alt="GraphQL" title="GraphQL">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                        alt="Docker" title="Docker">
-                    <img id="express"
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
-                        alt="Express" title="Express">
-                    <!-- <img id="express"
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss.svg"
-                        alt="Tailwind CSS" title="Tailwind CSS"> -->
+            <!-- About Section -->
+            <section id="about" class="about-section">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">Get to know me better</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text" data-aos="fade-right">
+                        <h3>I'm Vivek Kumar, a passionate Software Developer</h3>
+                        <p>
+                            With over 3 years of experience in web development, I currently work as a Software
+                            Developer,
+                            specializing in creating robust, scalable applications using the MERN stack. My journey
+                            began
+                            with a fascination for turning ideas into digital reality, and today I'm proud to be
+                            contributing
+                            to innovative software solutions.
+                        </p>
+                        <p>
+                            I'm passionate about clean code, modern development practices, and continuous learning.
+                            When I'm not coding, you'll find me exploring new technologies, contributing to open-source
+                            projects, or sharing knowledge with the developer community.
+                        </p>
+                        <div class="about-highlights">
+                            <!-- <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>3+ Years of Experience</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>50+ Projects Completed</span>
+                            </div> -->
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Technical Leadership</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Problem Solver</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-visual" data-aos="fade-left">
+                        <div class="about-card">
+                            <div class="card-header">
+                                <h4>My Journey</h4>
+                            </div>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <h5>2021 - Present</h5>
+                                        <p>MERN Stack Developer & Technical Lead</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <h5>2021 - 2025</h5>
+                                        <p>B.Tech Computer Science - CT University</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-dot"></div>
+                                    <div class="timeline-content">
+                                        <h5>2020</h5>
+                                        <p>Started Web Development Journey</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <section class="projects">
-                <h2>Featured Projects</h2>
-                <div class="project-items">
-                    <div class="project-card">
+            <!-- Skills Section -->
+            <section id="skills" class="skills-section">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Skills & Expertise</h2>
+                    <p class="section-subtitle">Technologies I work with</p>
+                </div>
+                <div class="skills-content">
+                    <div class="skills-categories">
+                        <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                            <h3>Frontend Development</h3>
+                            <div class="skill-items">
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">React.js</span>
+                                        <span class="skill-percentage">95%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="95"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">JavaScript</span>
+                                        <span class="skill-percentage">90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">TypeScript</span>
+                                        <span class="skill-percentage">85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Redux</span>
+                                        <span class="skill-percentage">80%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="80"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                            <h3>Backend Development</h3>
+                            <div class="skill-items">
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Node.js</span>
+                                        <span class="skill-percentage">90%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Express.js</span>
+                                        <span class="skill-percentage">88%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="88"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">MongoDB</span>
+                                        <span class="skill-percentage">85%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">GraphQL</span>
+                                        <span class="skill-percentage">75%</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="75"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tech-icons" data-aos="fade-left" data-aos-delay="400">
+                        <h3>Technologies I Love</h3>
+                        <div class="tech-grid">
+                            <div class="tech-icon" data-tech="React">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                    alt="React">
+                                <span>React</span>
+                            </div>
+                            <div class="tech-icon" data-tech="Node.js">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                                    alt="Node.js">
+                                <span>Node.js</span>
+                            </div>
+                            <div class="tech-icon" data-tech="MongoDB">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                                    alt="MongoDB">
+                                <span>MongoDB</span>
+                            </div>
+                            <div class="tech-icon" data-tech="JavaScript">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                                    alt="JavaScript">
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="tech-icon" data-tech="TypeScript">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                                    alt="TypeScript">
+                                <span>TypeScript</span>
+                            </div>
+                            <div class="tech-icon" data-tech="Express">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+                                    alt="Express">
+                                <span>Express</span>
+                            </div>
+                            <div class="tech-icon" data-tech="Redux">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg"
+                                    alt="Redux">
+                                <span>Redux</span>
+                            </div>
+                            <div class="tech-icon" data-tech="Docker">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                                    alt="Docker">
+                                <span>Docker</span>
+                            </div>
+                            <div class="tech-icon" data-tech="GraphQL">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg"
+                                    alt="GraphQL">
+                                <span>GraphQL</span>
+                            </div>
+                            <div class="tech-icon" data-tech="Java">
+                                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                                    alt="Java">
+                                <span>Java</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="projects-section">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Some of my recent work</p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="project-image">
                             <img src="./images/job.png" alt="Job Portal Website">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="https://jobportal-main-v2-client.onrender.com/" target="_blank"
+                                        class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="https://github.com/vivekkumar5555/jobportal-main" target="_blank"
+                                        class="project-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-info">
-                            <h3>Job Portal Website</h3>
-                            <p>Developed comprehensive user profiles for job seekers and recruiters with customizable
-                                settings.
-                                Enabled recruiters to post jobs with detailed descriptions and requirements.
-                                Integrated an application tracking system for candidates to monitor their application
-                                status.
-                                Implemented user authentication and authorization using JWT and bcrypts
-                                Created an admin dashboard for monitoring user activity, job postings, and application
-                                trends</p>
+                            <div class="project-header">
+                                <h3>Job Portal Website</h3>
+                                <div class="project-status">
+                                    <span class="status-badge completed">Completed</span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                A comprehensive job portal platform built with MERN stack featuring user authentication,
+                                job posting, application tracking, and admin dashboard. Includes advanced search
+                                filters,
+                                real-time notifications, and responsive design.
+                            </p>
                             <div class="project-tags">
                                 <span class="tag">React</span>
-                                <span class="tag">AI Integration</span>
-                                <span class="tag">Hooks</span>
-                                <span class="tag">Responsive</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                                <span class="tag">JWT</span>
+                                <span class="tag">Express</span>
                             </div>
                             <div class="project-links">
-                                <a href="https://jobportal-main-1.onrender.com/"><i
-                                        class="fas fa-external-link-alt"></i>Live Demo</a>
-                                <a href="https://github.com/vivekkumar5555/jobportal-main"><i class="fab fa-github"></i>
-                                    Code</a>
+                                <a href="https://jobportal-main-v2-client.onrender.com/" target="_blank"
+                                    class="btn btn-outline">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>Live Demo</span>
+                                </a>
+                                <a href="https://github.com/vivekkumar5555/jobportal-main" target="_blank"
+                                    class="btn btn-outline">
+                                    <i class="fab fa-github"></i>
+                                    <span>Source Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="project-image">
                             <img src="./images/gemini1.png" alt="Gemini AI Clone">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="https://github.com/vivekkumar5555/Gemini-AI" target="_blank"
+                                        class="project-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-info">
-                            <h3>Gemini AI Clone</h3>
-                            <p>Developed a dynamic UI/UX using React.js with real-time data integration and AI-driven
-                                features. Implemented React Hooks for efficient state management and created reusable UI
-                                components. Utilized React Router for smooth navigation and enhanced performance through
-                                code splitting.</p>
+                            <div class="project-header">
+                                <h3>Gemini AI Clone</h3>
+                                <div class="project-status">
+                                    <span class="status-badge completed">Completed</span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                A sophisticated AI-powered chat application built with React.js featuring real-time
+                                data integration and AI-driven responses. Implemented advanced React Hooks for state
+                                management, created reusable UI components, and utilized React Router for seamless
+                                navigation.
+                            </p>
                             <div class="project-tags">
                                 <span class="tag">React</span>
                                 <span class="tag">AI Integration</span>
                                 <span class="tag">Hooks</span>
-                                <span class="tag">Responsive</span>
+                                <span class="tag">Real-time</span>
                             </div>
                             <div class="project-links">
-                                <!-- <a href=""><i class="fas fa-external-link-alt"></i>sorry Not Live Demo</a> -->
-                                <a href="https://github.com/vivekkumar5555/Gemini-AI"><i class="fab fa-github"></i>
-                                    Code</a>
+                                <a href="https://github.com/vivekkumar5555/Gemini-AI" target="_blank"
+                                    class="btn btn-outline">
+                                    <i class="fab fa-github"></i>
+                                    <span>Source Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                                 alt="eCommerce Website">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="#" class="project-link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-info">
-                            <h3>eCommerce Website</h3>
-                            <p>Developed a full-stack eCommerce platform using the MERN stack. Implemented user
-                                authentication, RESTful APIs for product management, cart functionality, and order
-                                processing. Designed responsive UI with React.js and integrated payment gateway for
-                                secure transactions.</p>
+                            <div class="project-header">
+                                <h3>eCommerce Platform</h3>
+                                <div class="project-status">
+                                    <span class="status-badge completed">Completed</span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                A comprehensive full-stack eCommerce platform built with MERN stack featuring user
+                                authentication, product management, shopping cart functionality, and secure payment
+                                processing. Includes admin dashboard, order tracking, and responsive design.
+                            </p>
                             <div class="project-tags">
                                 <span class="tag">MERN</span>
                                 <span class="tag">JWT</span>
@@ -161,211 +575,267 @@
                                 <span class="tag">Payment Gateway</span>
                             </div>
                             <div class="project-links">
-                                <!-- <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a> -->
-                                <a href="#"><i class="fab fa-github"></i> Code</a>
+                                <a href="#" class="btn btn-outline">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    <span>Live Demo</span>
+                                </a>
+                                <a href="#" class="btn btn-outline">
+                                    <i class="fab fa-github"></i>
+                                    <span>Source Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
                         <div class="project-image">
                             <img src="https://images.unsplash.com/photo-1606768666853-403c90a981ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                                 alt="Parking Bill Tracking System">
+                            <div class="project-overlay">
+                                <div class="project-actions">
+                                    <a href="https://github.com/vivekkumar5555/Parking-Bill-Tracking-System"
+                                        target="_blank" class="project-link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="project-info">
-                            <h3>Parking Bill Tracking System</h3>
-                            <p>Developed a user-friendly system for efficient vehicle management using MERN stack.
-                                Implemented features including vehicle registration, tracking, and reporting. Created
-                                automated fee calculation and generated PDF reports sorted by bill amount for daily
-                                reporting.</p>
+                            <div class="project-header">
+                                <h3>Parking Management System</h3>
+                                <div class="project-status">
+                                    <span class="status-badge completed">Completed</span>
+                                </div>
+                            </div>
+                            <p class="project-description">
+                                An efficient vehicle management system built with MERN stack featuring vehicle
+                                registration, automated fee calculation, real-time tracking, and comprehensive
+                                reporting. Includes PDF generation for daily reports and admin dashboard.
+                            </p>
                             <div class="project-tags">
                                 <span class="tag">MERN</span>
                                 <span class="tag">PDF Generation</span>
                                 <span class="tag">Automation</span>
+                                <span class="tag">Reporting</span>
                             </div>
                             <div class="project-links">
-                                <!-- <a href="#"><i class="fas fa-external-link-alt"></i>Live Demo</a> -->
-                                <a href="https://github.com/vivekkumar5555/Parking-Bill-Tracking-System"><i
-                                        class="fab fa-github"></i> Code</a>
+                                <a href="https://github.com/vivekkumar5555/Parking-Bill-Tracking-System" target="_blank"
+                                    class="btn btn-outline">
+                                    <i class="fab fa-github"></i>
+                                    <span>Source Code</span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="education">
-                <h2>Education</h2>
-                <div class="education-items">
-                    <div class="education-card">
-                        <div class="education-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="education-info">
-                            <h3>Bachelor of Technology in Computer Science</h3>
-                            <p>CT University</p>
-                            <p>Specialization in Web Development and Data Structures</p>
-                            <span class="education-duration">2021 - 2025</span>
+            <!-- 3D Interactive Section -->
+            <section id="interactive" class="interactive-section">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Interactive 3D Experience</h2>
+                    <p class="section-subtitle">Move your mouse to rotate the 3D object</p>
+                </div>
+                <div class="interactive-content" data-aos="fade-up" data-aos-delay="200">
+                    <div class="cube-container">
+                        <div class="cube-object" id="interactive3D">
+                            <div class="cube-face front">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="cube-face back">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <div class="cube-face right">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <div class="cube-face left">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="cube-face top">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <div class="cube-face bottom">
+                                <i class="fab fa-docker"></i>
+                            </div>
                         </div>
                     </div>
-                    <!-- <div class="education-card">
-                        <div class="education-icon">
-                            <i class="fas fa-certificate"></i>
+                    <div class="interactive-info">
+                        <h3>Technologies I Love</h3>
+                        <p>This interactive 3D cube showcases the technologies I work with. Move your mouse over it to
+                            see it rotate in real-time!</p>
+                        <div class="tech-highlights">
+                            <div class="tech-highlight">
+                                <i class="fab fa-react"></i>
+                                <span>React.js</span>
+                            </div>
+                            <div class="tech-highlight">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="tech-highlight">
+                                <i class="fab fa-js-square"></i>
+                                <span>JavaScript</span>
+                            </div>
                         </div>
-                        <div class="education-info">
-                            <h3>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae, officiis.</h3>
-                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Blanditiis, itaque.</p>
-                            <p>Completed advanced training in MongoDB, Express, React, and Node.js</p>
-                            <span class="education-duration">2025</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section id="experience" class="experience-section">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Experience & Education</h2>
+                    <p class="section-subtitle">My professional journey</p>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="experience-header">
+                            <h3 class="experience-title">MERN Stack Developer & Technical Lead</h3>
+                            <span class="experience-duration">2021 - Present</span>
                         </div>
-                    </div> -->
-                    <!-- <div class="education-card">
-                        <div class="education-icon">
-                            <i class="fas fa-school"></i>
+                        <div class="experience-company">Freelance & Contract Work</div>
+                        <p class="experience-description">
+                            Leading development teams in building scalable web applications using MERN stack.
+                            Specialized in React.js frontend development, Node.js backend services, and MongoDB
+                            database design. Mentoring junior developers and implementing best practices for
+                            code quality and project management.
+                        </p>
+                    </div>
+                    <div class="experience-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Bachelor of Technology in Computer Science</h3>
+                            <span class="experience-duration">2021 - 2025</span>
                         </div>
-                        <div class="education-info">
-                            <h3>Higher Secondary Education</h3>
-                            <p>shri Guru Harikrishan Public School</p>
-                            <p>Non Medical</p>
-                            <span class="education-duration">2019 - 2021</span>
+                        <div class="experience-company">CT University</div>
+                        <p class="experience-description">
+                            Pursuing B.Tech in Computer Science with specialization in Web Development and
+                            Data Structures. Focused on modern web technologies, software engineering principles,
+                            and practical application development. Active participant in coding competitions
+                            and technical workshops.
+                        </p>
+                    </div>
+                    <div class="experience-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="experience-header">
+                            <h3 class="experience-title">Web Development Journey</h3>
+                            <span class="experience-duration">2020 - Present</span>
                         </div>
-                    </div> -->
+                        <div class="experience-company">Self-Taught & Continuous Learning</div>
+                        <p class="experience-description">
+                            Started web development journey with HTML, CSS, and JavaScript. Progressed to
+                            modern frameworks like React.js and Node.js. Continuously learning new technologies
+                            and contributing to open-source projects. Passionate about creating innovative
+                            solutions and sharing knowledge with the developer community.
+                        </p>
+                    </div>
                 </div>
             </section>
 
 
-            <section class="development">
-                <h1>" Full-Stack Development:</h1>
-                <h1>--From Database to UI--</h1>
-                <h1>Creating Seamless Experiences"</h1>
-            </section>
         </main>
 
-        <div class="contact">
-            <div class="cont1">
-                <div>
-                    <img src="" alt="">
-                    <h1>Get in touch</h1>
-                </div>
-                <form action="https://api.web3forms.com/submit" method="POST">
-
-
-                    <input type="hidden" name="access_key" value="336a173a-5bf6-4b5a-b952-2a6f7eb312f4">
-
-                    <input type="text" name="name" placeholder="Enter your Name" required>
-                    <input type="email" name="email" placeholder="Enter your Email" required>
-                    <textarea name="message" required placeholder="Write Message"></textarea>
-
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-                    <button type="submit">Submit Form</button>
-
-                </form>
-                <!-- <form action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="336a173a-5bf6-4b5a-b952-2a6f7eb312f4">
-                    <div><input type="text" name="name" placeholder="Name" required></div>
-                    <div><input type="email" name="email" placeholder="Email" required></div>
-                    <div><textarea name="message" rows="10" cols="60" placeholder="Message" required></textarea></div>
-                    <div><button type="submit">Send Message</button></div>
-                </form> -->
-
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's work together on your next project</p>
             </div>
-            <div class=" cont2">
-                <p>Here is a good spot for a message to your readers to let them know how best to reach out to you.</p>
-                <div class="contact-links">
-                    <a href="mailto:kumarvivek60403@gmail.com" class="contact-link">
+            <div class="contact-content">
+                <div class="contact-form" data-aos="fade-right">
+                    <h3>Send me a message</h3>
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="336a173a-5bf6-4b5a-b952-2a6f7eb312f4">
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell me about your project..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="contact-info" data-aos="fade-left">
+                    <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        @kumarvivek60403@gmail.com
-                    </a>
-                    <a href="https://instagram.com/ig_vivek55" target="_blank" class="contact-link">
-                        <i class="fab fa-instagram"></i>
-                        @ig_vivek55
-                    </a>
-                    <a href="https://www.linkedin.com/in/vivek-kumar-abced34533" target="_blank" class="contact-link">
+                        <div class="contact-item-content">
+                            <h4>Email</h4>
+                            <p>kumarvivek60403@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
                         <i class="fab fa-linkedin"></i>
-                        @ vivek-kumar-abced34533
-                    </a>
-                    <a href="https://github.com/vivekkumar5555" target="_blank" class="contact-link">
+                        <div class="contact-item-content">
+                            <h4>LinkedIn</h4>
+                            <p>Connect with me professionally</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
                         <i class="fab fa-github"></i>
-                        @vivekkumar5555
-                    </a>
+                        <div class="contact-item-content">
+                            <h4>GitHub</h4>
+                            <p>Check out my code repositories</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <div class="contact-item-content">
+                            <h4>Instagram</h4>
+                            <p>Follow my development journey</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-        </div>
+        </section>
+        </main>
 
         <footer>
-            <p>&COPY; 2025 Vivek Kumar. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/vivekkumar5555" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/vivek-kumar-abced34533" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://instagram.com/ig_vivek55" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:kumarvivek60403@gmail.com" class="social-link">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <p>&copy; 2025 Vivek Kumar. All rights reserved. Built with ❤️ using modern web technologies.</p>
         </footer>
     </div>
 
-    <script>
-        const modeToggle = document.querySelector('.mode');
-        modeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const icon = modeToggle.querySelector('i');
-            if (document.body.classList.contains('dark-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-                document.querySelector('body').style.background = "black";
-                document.querySelector('body').style.color = "white";
-                document.querySelector('p').style.color = "white";
-                document.querySelector('h2').style.color = "white";
-                document.querySelector('.resume').style.background = "white";
-                document.querySelector('.work a').style.color = "white";
-                document.querySelector('.project a').style.color = "white";
-                document.querySelector('.contact').style.background = "black";
-                document.querySelector('.contact').style.color = "white";
-                document.querySelector('.contact-links').style.color = "white";
-                document.querySelector('.about a').style.color = "white";
-                document.querySelector('.education-duration').style.color = "black"
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-                document.querySelector('body').style.background = "white";
-                document.querySelector('body').style.color = "black";
-                document.querySelector('p').style.color = "gray";
-                document.querySelector('h2').style.color = "black";
-
-                document.querySelector('.work a').style.color = "black";
-                document.querySelector('.project a').style.color = "black";
-                document.querySelector('.about a').style.color = "black";
-
-                document.querySelector('.contact').style.background = "white";
-            }
-
-
-        });
-        document.querySelector('.btn').addEventListener('click', () => {
-            document.querySelector('.contact').scrollIntoView({
-                behavior: "smooth"
-            })
-        })
-        document.querySelector('.project').addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.projects').scrollIntoView({
-                behavior: "smooth"
-            })
-        })
-        document.querySelector('.work').addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.contact').scrollIntoView({
-                behavior: "smooth"
-            })
-        })
-        document.querySelector('.about').addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.introduction').scrollIntoView({
-                behavior: "smooth"
-            })
-        })
-        document.querySelector('.edu').addEventListener('click', (e) => {
-            e.preventDefault();
-            document.querySelector('.education').scrollIntoView({
-                behavior: "smooth"
-            })
-        })
-
-
-
-
-    </script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
